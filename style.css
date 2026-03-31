@@ -7,6 +7,10 @@
 
 :root {
   /* Brand Colors */
+  --purple:       #6b3fa0;
+  --purple-mid:   #8b5cbd;
+  --purple-light: #b48fdc;
+  --purple-pale:  #f0e8fa;
   --gold:         #c9a84c;
   --gold-light:   #e8c87a;
   --gold-pale:    #f5e8c0;
@@ -157,9 +161,9 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 80% at 80% 50%, rgba(15,52,96,0.6) 0%, transparent 70%),
-    linear-gradient(160deg, #0d1117 0%, #0c1e3c 40%, #0f3460 70%, #0d1117 100%);
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 80% 50%, rgba(107,63,160,0.5) 0%, transparent 70%),
+    linear-gradient(160deg, #0d1117 0%, #2a1058 40%, #4a1a8a 65%, #0d1117 100%);
   z-index: 0;
 }
 
@@ -365,7 +369,7 @@ body {
 
 /* ── VERSE BANNER ─────────────────────────────────────────────── */
 .verse-banner {
-  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  background: linear-gradient(135deg, #2a1058, var(--purple));
   padding: 20px 24px;
   text-align: center;
 }
@@ -519,15 +523,15 @@ body {
 }
 
 .programme-card.featured {
-  border-color: var(--gold);
-  background: linear-gradient(160deg, #fdf9f0 0%, var(--white) 100%);
-  box-shadow: 0 4px 28px rgba(201,168,76,0.15);
+  border-color: var(--purple);
+  background: linear-gradient(160deg, var(--purple-pale) 0%, var(--white) 100%);
+  box-shadow: 0 4px 28px rgba(107,63,160,0.15);
 }
 
 .programme-badge {
   display: inline-block;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--dark);
+  background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+  color: var(--white);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -585,10 +589,161 @@ body {
   top: 3px;
 }
 
+/* ── CERTIFICATION CALLOUT ────────────────────────────────────── */
+.cert-callout {
+  margin-top: 48px;
+  background: linear-gradient(135deg, #2a1058, var(--purple));
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  color: var(--white);
+}
+
+.cert-callout-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-callout h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+}
+
+.cert-callout p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+}
+
+.cert-callout strong { color: var(--gold-light); }
+
+.programme-cert-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.83rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ── CURRICULUM SECTION ───────────────────────────────────────── */
+.curriculum-section {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.curriculum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.curriculum-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.curriculum-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--purple), var(--gold));
+}
+
+.curriculum-card.weekend-card::before {
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+.curriculum-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.curriculum-level {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+
+.curriculum-card.weekend-card .curriculum-level {
+  color: var(--gold);
+}
+
+.curriculum-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.curriculum-desc {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.curriculum-topics {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.topic {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.87rem;
+  color: var(--text-mid);
+  line-height: 1.45;
+}
+
+.topic-dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--gold));
+  margin-top: 5px;
+}
+
+.curriculum-card.weekend-card .topic-dot {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+}
+
 /* ── FORM SECTION ─────────────────────────────────────────────── */
 .form-section {
   padding: 100px 0 120px;
-  background: linear-gradient(160deg, var(--dark) 0%, var(--navy) 40%, #0c1e3c 100%);
+  background: linear-gradient(160deg, #0d1117 0%, #2a1058 40%, #4a1a8a 70%, #0d1117 100%);
   position: relative;
   overflow: hidden;
 }
@@ -827,7 +982,7 @@ form {
 
 /* ── FOOTER ───────────────────────────────────────────────────── */
 .site-footer {
-  background: var(--dark);
+  background: #0d1117;
   padding: 70px 24px 40px;
   position: relative;
   overflow: hidden;
@@ -916,6 +1071,9 @@ form {
 
   .feature-grid { grid-template-columns: 1fr 1fr; }
   .programme-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .curriculum-grid { grid-template-columns: 1fr; max-width: 480px; }
+
+  .cert-callout { flex-direction: column; align-items: center; text-align: center; padding: 28px 24px; }
 
   form { padding: 32px 24px; }
   .field-grid { grid-template-columns: 1fr; }
